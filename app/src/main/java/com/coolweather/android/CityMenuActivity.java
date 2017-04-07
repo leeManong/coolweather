@@ -1,6 +1,7 @@
 package com.coolweather.android;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -42,11 +43,13 @@ public class CityMenuActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.add_city_layout);
         listView = (ListView) findViewById(R.id.add_city_view) ;
 
-
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         String bingPic = prefs.getString("bing_pic", null);
         Glide.with(this).load(bingPic).into(bingPicImg);
+
+
+
 
         addCountyList = DataSupport.findAll(AddCounty.class);
         if (addCountyList.size() > 0) {
@@ -63,11 +66,9 @@ public class CityMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
-
-
-
             }
         });
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -78,12 +79,14 @@ public class CityMenuActivity extends AppCompatActivity {
                 for (County county : counties) {
                     weatherId = county.getWeatherId();
                 }
+                Intent broadcastIntent = new Intent("com.coolweather.android.FINISH_ACTIVITY");
+                sendBroadcast(broadcastIntent);
 
                 Intent intent = new Intent(CityMenuActivity.this, WeatherActivity.class);
                 intent.putExtra("weather_id", weatherId);
                 intent.putExtra("activity","CityMenuActivity");
-
                 startActivity(intent);
+                WeatherActivity.minstance.finish();
                 finish();
 
             }

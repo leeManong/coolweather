@@ -120,7 +120,7 @@ public class ChooseAreaFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), WeatherActivity.class);
                         intent.putExtra("weather_id", weatherId);
                         intent.putExtra("activity","CityMenuActivity");
-
+                        WeatherActivity.minstance.finish();
                         startActivity(intent);
                         getActivity().finish();
 

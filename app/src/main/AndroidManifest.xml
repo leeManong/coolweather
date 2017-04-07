@@ -19,8 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WeatherActivity"
-            android:launchMode="singleTop"/>
+        <activity android:name=".WeatherActivity" />
 
         <service
             android:name=".AutoUpdateService"
@@ -29,7 +28,26 @@
 
         </service>
 
-        <activity android:name=".CityMenuActivity"></activity>
+        <activity android:name=".CityMenuActivity">
+
+        </activity>
+
+        <receiver
+            android:name=".WeatherActivity$MyBroadcastReceive"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.coolweather.android.FINISH_ACTIVITY" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.coolweather.android.FINISH" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
