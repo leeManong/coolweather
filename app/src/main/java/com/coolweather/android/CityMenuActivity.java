@@ -59,7 +59,7 @@ public class CityMenuActivity extends AppCompatActivity {
             }
         }
 
-        adapter = new ArrayAdapter<>(CityMenuActivity.this, android.R.layout.simple_list_item_1, dataList);
+        adapter = new ArrayAdapter<>(CityMenuActivity.this, R.layout.array_adapter, dataList);
         listView.setAdapter(adapter);
 
         addCity.setOnClickListener(new View.OnClickListener() {

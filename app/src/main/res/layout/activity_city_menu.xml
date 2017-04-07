@@ -35,7 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:text="添加城市" />
+        android:background="#000f"
+        android:textSize="50sp"
+        android:textColor="#fff"
+        android:text="+" />
 
 
 </FrameLayout>
