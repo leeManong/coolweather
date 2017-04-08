@@ -3,6 +3,7 @@ package com.coolweather.android.util;
 import android.text.TextUtils;
 import com.coolweather.android.db.City;
 import com.coolweather.android.db.County;
+import com.coolweather.android.db.County_All;
 import com.coolweather.android.db.Province;
 import com.coolweather.android.gson.Weather;
 import com.google.gson.Gson;
@@ -83,6 +84,28 @@ public class Utility {
         }
         return false;
     }
+
+    public static boolean handleCountyAllResponse(String response) {
+        if (!TextUtils.isEmpty(response)) {
+            try {
+                JSONArray allCounties = new JSONArray(response);
+                for (int i = 0; i < allCounties.length(); i++) {
+                    JSONObject countyObject = allCounties.getJSONObject(i);
+                    County_All county = new County_All();
+                    county.setCountryName(countyObject.getString("countryZh"));
+                    county.setProvinceName(countyObject.getString("provinceZh"));
+                    county.setCityName(countyObject.getString("cityZh"));
+                    county.save();
+                }
+                return true;
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+
 
     /**
      * 将返回的JSON数据解析成Weather实体类

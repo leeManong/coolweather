@@ -31,12 +31,14 @@ public class CityMenuActivity extends AppCompatActivity {
     private ArrayAdapter<String> adapter;
     private ListView listView;
     private List<AddCounty> addCountyList;
+    public static CityMenuActivity minstance;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_city_menu);
+        minstance = this;
 
         ImageView bingPicImg = (ImageView) findViewById(R.id.city_background_image);
         final Button addCity = (Button) findViewById(R.id.add_city_button);
@@ -65,7 +67,10 @@ public class CityMenuActivity extends AppCompatActivity {
         addCity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
+                //drawerLayout.openDrawer(GravityCompat.START);
+                Intent intent = new Intent(CityMenuActivity.this, SearchCounty.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -79,8 +84,6 @@ public class CityMenuActivity extends AppCompatActivity {
                 for (County county : counties) {
                     weatherId = county.getWeatherId();
                 }
-                Intent broadcastIntent = new Intent("com.coolweather.android.FINISH_ACTIVITY");
-                sendBroadcast(broadcastIntent);
 
                 Intent intent = new Intent(CityMenuActivity.this, WeatherActivity.class);
                 intent.putExtra("weather_id", weatherId);

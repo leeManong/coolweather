@@ -24,30 +24,10 @@
         <service
             android:name=".AutoUpdateService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="true"></service>
 
-        </service>
-
-        <activity android:name=".CityMenuActivity">
-
-        </activity>
-
-        <receiver
-            android:name=".WeatherActivity$MyBroadcastReceive"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.coolweather.android.FINISH_ACTIVITY" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.coolweather.android.FINISH" />
-            </intent-filter>
-        </receiver>
+        <activity android:name=".CityMenuActivity"></activity>
+        <activity android:name=".SearchCounty"></activity>
     </application>
 
 </manifest>

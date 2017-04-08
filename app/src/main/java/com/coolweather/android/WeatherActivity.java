@@ -70,13 +70,6 @@ public class WeatherActivity extends AppCompatActivity {
 
     public static WeatherActivity minstance;
 
-    public class MyBroadcastReceive extends BroadcastReceiver{
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            Toast.makeText(context,"broad",Toast.LENGTH_SHORT).show();
-            finish();
-        }
-    }
 
 
     @Override
@@ -144,7 +137,7 @@ public class WeatherActivity extends AppCompatActivity {
                         editor.putString("weather_id", weatherId);
                         editor.apply();
                     }
-                } else if (activity.equals("CityMenuActivity")) {
+                } else if (activity.equals("CityMenuActivity")|activity.equals("SearchCounty")){
                     weatherId = getIntent().getStringExtra("weather_id");
                     swipeRefresh.setRefreshing(true);
                     requestWeather(weatherId);
