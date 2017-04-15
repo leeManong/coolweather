@@ -95,6 +95,7 @@ public class Utility {
                     county.setCountryName(countyObject.getString("countryZh"));
                     county.setProvinceName(countyObject.getString("provinceZh"));
                     county.setCityName(countyObject.getString("cityZh"));
+                    county.setCountyId(countyObject.getString("id"));
                     county.save();
                 }
                 return true;
@@ -104,8 +105,6 @@ public class Utility {
         }
         return false;
     }
-
-
 
     /**
      * 将返回的JSON数据解析成Weather实体类

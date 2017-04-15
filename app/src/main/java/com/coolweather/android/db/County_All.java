@@ -11,6 +11,15 @@ public class County_All extends DataSupport {
     private String countryName;
     private String provinceName;
     private String cityName;
+    private String countyId;
+
+    public String getCountyId() {
+        return countyId;
+    }
+
+    public void setCountyId(String countyId) {
+        this.countyId = countyId;
+    }
 
     public String getCountryName() {
         return countryName;
